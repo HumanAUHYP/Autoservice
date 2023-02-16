@@ -8,7 +8,7 @@
         Title="MainWindow" Height="550" Width="900">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="80"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Background="#FFFFFFE1">
@@ -17,10 +17,10 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image Source="Images/service_logo.png" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-            <TextBlock x:Name="tbTitle" Grid.Column="1" Text="Начальная страница" VerticalAlignment="Center"/>
+            <Image Source="Images/service_logo.png" HorizontalAlignment="Left" Margin="10"/>
+            <TextBlock x:Name="tbTitle" Grid.Column="1" Text="Начальная страница" VerticalAlignment="Center" FontSize="32"/>
             <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="btnBack" Click="btnBack_Click" Margin="0,0,10,0">
+                <Button x:Name="btnBack" Click="btnBack_Click">
                     <Image Source="Images/back.png"/>
                 </Button>
             </StackPanel>
