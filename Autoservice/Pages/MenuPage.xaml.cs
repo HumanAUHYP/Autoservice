@@ -20,15 +20,17 @@ namespace Autoservice.Pages
     /// </summary>
     public partial class MenuPage : Page
     {
-        MainWindow globalMainWindow;
+        public MainWindow globalMainWindow;
         public MenuPage(MainWindow mainWindow)
         {
             InitializeComponent();
+            globalMainWindow = mainWindow;
+            globalMainWindow.tbTitle.Text = "Меню";
         }
 
         private void btnClients_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new ClientsTablePage(globalMainWindow));
         }
 
         private void btnServices_Click(object sender, RoutedEventArgs e)
@@ -40,5 +42,6 @@ namespace Autoservice.Pages
         {
 
         }
+
     }
 }

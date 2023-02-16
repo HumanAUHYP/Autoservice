@@ -20,9 +20,13 @@ namespace Autoservice.Pages
     /// </summary>
     public partial class ClientsTablePage : Page
     {
-        public ClientsTablePage()
+        public MainWindow globalMainWindow;
+        public ClientsTablePage(MainWindow mainWindow)
         {
             InitializeComponent();
+            globalMainWindow = mainWindow;
+            globalMainWindow.tbTitle.Text = "Клиенты";
+            
         }
     }
 }

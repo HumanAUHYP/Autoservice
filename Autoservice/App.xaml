@@ -11,13 +11,80 @@
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontFamily" Value="Tw Cen MT"/>
         </Style>
+        
+        <Color x:Key="MouseLeave" A="0" R="255" G="255" B="255" />
+        <Color x:Key="MouseOver" A="0" R="255" G="255" B="255" />
+
+        <SolidColorBrush x:Key="BorderBrush" Color="#EEE"/>
+
+
+        <!--Button Style-->
         <Style TargetType="Button">
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="FontFamily" Value="Tw Cen MT"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="TemplateBorder" 
+                                RenderTransformOrigin="0.5,0.5"
+                                BorderBrush="{StaticResource BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border.Background>
+                                <SolidColorBrush x:Name="BtnBgColor" Color="{StaticResource MouseLeave}"/>
+                            </Border.Background>
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                    <Condition Property="IsEnabled" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="RenderTransform" TargetName="TemplateBorder">
+                                    <Setter.Value>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.05" ScaleY="1.05"></ScaleTransform>
+                                        </TransformGroup>
+                                    </Setter.Value>
+                                </Setter>
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="EnterMouse">
+                                            <ColorAnimation Storyboard.TargetName="BtnBgColor"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="{StaticResource MouseOver}"
+                                                            Duration="0:0:0:0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+                                <MultiTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="LeaveMouse">
+                                            <ColorAnimation Storyboard.TargetName="BtnBgColor"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="{StaticResource MouseLeave}"
+                                                            Duration="0:0:0:0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.ExitActions>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsPressed" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="RenderTransform" TargetName="TemplateBorder">
+                                    <Setter.Value>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="0.9" ScaleY="0.9"></ScaleTransform>
+                                        </TransformGroup>
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
-         
     </Application.Resources>
 </Application>

@@ -30,10 +30,5 @@ namespace Autoservice
         {
             if (mainFrame.CanGoBack) mainFrame.GoBack();
         }
-
-        private void btnForward_Click(object sender, RoutedEventArgs e)
-        {
-            if (mainFrame.CanGoForward) mainFrame.GoForward();
-        }
     }
 }
