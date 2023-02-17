@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Autoservice.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="950"
       Title="ClientsTablePage">
 
     <Grid>
@@ -15,44 +15,86 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
-        <Grid>
+        <Grid Background="#FFFFFFE1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="0.25*"/>
-                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox Margin="10"/>
-            <ComboBox Grid.Column="1" Margin="10">
-                
-            </ComboBox>
-            <ComboBox Grid.Column="2" Margin="10">
-
-            </ComboBox>
+            <TextBox x:Name="tbSearch" Margin="10" Width="440" HorizontalAlignment="Right"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <ComboBox x:Name="cbSort" Width="200"  Margin="10">
+                    <TextBlock Text="Без сортировки"/>
+                    <TextBlock x:Name="tbLNameSort" Text="Фамилия А-Я"/>
+                    <TextBlock x:Name="tbLNameDescSort" Text="Фамилия Я-А"/>
+                    <TextBlock x:Name="tbFNameSort" Text="Имя А-Я"/>
+                    <TextBlock x:Name="tbFNameDescSort" Text="Имя Я-А"/>
+                </ComboBox>
+                <ComboBox x:Name="cbGender" Width="200" DisplayMemberPath="Name" Grid.Column="2" Margin="10"/>
+            </StackPanel>
+            
         </Grid>
 
-        <ListView Grid.Row="1">
-            
+        <ListView x:Name="lvTable" Grid.Row="1" ItemsSource="{Binding Clients}" HorizontalContentAlignment="Stretch" BorderBrush="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="10" Padding="10" BorderBrush="Black" BorderThickness="2" CornerRadius="5" MaxWidth="880">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Height="128">
+                                <Image.Source>
+                                    <Binding Path="PhotoPath">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>../Images/clients.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+                            <StackPanel Grid.Column="1" Margin="30">
+                                <TextBlock>
+                                    <Run Text="ФИО: "/>
+                                    <Run Text="{Binding LastName}"/>
+                                    <Run Text="{Binding FirstName}"/>
+                                    <Run Text="{Binding Patronymic}"/>
+                                </TextBlock>
+                                <TextBlock>
+                                    <Run Text="Пол: "/>
+                                    <Run Text="{Binding Gender.Name}"/>
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Margin="30">
+                                <TextBlock Text="Номер телефона: "/>
+                                <TextBlock Text="{Binding Phone}"/>
+                            </StackPanel>
+                            
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Background="#FFFFFFE1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Изменить"/>
-                <Button Content="Добавить"/>
-                <Button Content="Удалить"/>
+                <Button x:Name="btnChange" Content="Изменить" Click="btnChange_Click"/>
+                <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"/>
+                <Button x:Name="btnDelete" Content="Удалить" Click="btnDelete_Click"/>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="&lt;"/>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Button x:Name="btnLastPage" Content="&lt;" Click="btnLastPage_Click"/>
+                <StackPanel x:Name="spPages" Orientation="Horizontal" VerticalAlignment="Center">
                     <TextBlock Text="1"/>
                     <TextBlock Text="2"/>
                     <TextBlock Text="3"/>
                 </StackPanel>
-                <Button Content="&gt;"/>
+                <Button x:Name="btnNextPage" Content="&gt;" Click="btnNextPage_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

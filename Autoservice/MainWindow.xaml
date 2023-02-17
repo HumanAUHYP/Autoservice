@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Autoservice"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="900">
+        Title="MainWindow" Height="600" Width="950">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -21,7 +21,7 @@
             <TextBlock x:Name="tbTitle" Grid.Column="1" Text="Начальная страница" VerticalAlignment="Center" FontSize="32"/>
             <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="btnBack" Click="btnBack_Click">
-                    <Image Source="Images/back.png"/>
+                    <Image Source="Images\back.png"/>
                 </Button>
             </StackPanel>
         </Grid>

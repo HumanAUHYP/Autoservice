@@ -35,12 +35,12 @@ namespace Autoservice.Pages
 
         private void btnServices_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new ServicesTablePage());
         }
 
         private void btnPerformServices_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new PerformServicesTablePage());
         }
 
     }

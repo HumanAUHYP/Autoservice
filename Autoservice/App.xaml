@@ -11,6 +11,10 @@
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontFamily" Value="Tw Cen MT"/>
         </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontFamily" Value="Tw Cen MT"/>
+        </Style>
         
         <Color x:Key="MouseLeave" A="0" R="255" G="255" B="255" />
         <Color x:Key="MouseOver" A="0" R="255" G="255" B="255" />
@@ -21,6 +25,7 @@
         <!--Button Style-->
         <Style TargetType="Button">
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontFamily" Value="Tw Cen MT"/>
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Template">
                 <Setter.Value>
