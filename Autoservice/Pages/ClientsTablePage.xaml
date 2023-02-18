@@ -22,14 +22,14 @@
             </Grid.ColumnDefinitions>
             <TextBox x:Name="tbSearch" Margin="10" Width="440" HorizontalAlignment="Right"/>
             <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <ComboBox x:Name="cbSort" Width="200"  Margin="10">
+                <ComboBox Style="{DynamicResource ComboBoxStyle1}" x:Name="cbSort" Width="200"  Margin="10">
                     <TextBlock Text="Без сортировки"/>
                     <TextBlock x:Name="tbLNameSort" Text="Фамилия А-Я"/>
                     <TextBlock x:Name="tbLNameDescSort" Text="Фамилия Я-А"/>
                     <TextBlock x:Name="tbFNameSort" Text="Имя А-Я"/>
                     <TextBlock x:Name="tbFNameDescSort" Text="Имя Я-А"/>
                 </ComboBox>
-                <ComboBox x:Name="cbGender" Width="200" DisplayMemberPath="Name" Grid.Column="2" Margin="10"/>
+                <ComboBox Style="{DynamicResource ComboBoxStyle1}" x:Name="cbGender" Width="200" DisplayMemberPath="Name" Grid.Column="2" Margin="10"/>
             </StackPanel>
             
         </Grid>
@@ -41,8 +41,8 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
                             <Image Height="128">
                                 <Image.Source>
@@ -65,8 +65,8 @@
                                     <Run Text="{Binding Gender.Name}"/>
                                 </TextBlock>
                             </StackPanel>
-                            <StackPanel Grid.Column="2" Margin="30">
-                                <TextBlock Text="Номер телефона: "/>
+                            <StackPanel Grid.Column="2" Margin="0, 30">
+                                <TextBlock Text="Контакты: "/>
                                 <TextBlock Text="{Binding Phone}"/>
                             </StackPanel>
                             
