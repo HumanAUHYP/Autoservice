@@ -34,7 +34,7 @@
             
         </Grid>
 
-        <ListView x:Name="lvTable" Grid.Row="1" ItemsSource="{Binding Clients}" HorizontalContentAlignment="Stretch" BorderBrush="Transparent" MaxWidth="880">
+        <ListView x:Name="lvTable" Grid.Row="1" ItemsSource="{Binding Clients}" HorizontalContentAlignment="Stretch" BorderBrush="Transparent" MaxWidth="1000">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Margin="10" Padding="10" BorderBrush="Black" BorderThickness="1" CornerRadius="5" >
@@ -42,7 +42,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition/>
-                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="180"/>
                             </Grid.ColumnDefinitions>
                             <Image Height="128">
                                 <Image.Source>
@@ -65,7 +65,7 @@
                                     <Run Text="{Binding Gender.Name}"/>
                                 </TextBlock>
                             </StackPanel>
-                            <StackPanel Grid.Column="2" Margin="0, 30" HorizontalAlignment="Left">
+                            <StackPanel Grid.Column="2" Margin="0, 30">
                                 <TextBlock Text="Контакты: "/>
                                 <TextBlock Text="{Binding Phone}"/>
                             </StackPanel>
