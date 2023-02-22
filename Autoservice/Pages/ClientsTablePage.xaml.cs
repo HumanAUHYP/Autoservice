@@ -23,7 +23,9 @@ namespace Autoservice.Pages
     {
         public MainWindow globalMainWindow;
         public List<Client> Clients { get; set; }
-        const int ITEMONPAGE = 19;
+        public List<Client> AllClients { get; set; }
+        public List<Gender> Genders { get; set; }
+        const int ITEMONPAGE = 20;
         int pageIndex = 0;
         public ClientsTablePage(MainWindow mainWindow)
         {
@@ -31,11 +33,18 @@ namespace Autoservice.Pages
             globalMainWindow = mainWindow;
             globalMainWindow.tbTitle.Text = "Клиенты";
 
+            Genders = DataAccess.GetGenders();
+            Genders.Insert(0, new Gender { Name = "Любой гендер" });
+            cbGender.ItemsSource = Genders;
 
             Clients = DataAccess.GetClients();
+            AllClients = Clients;
             lvTable.ItemsSource = Clients;
 
             GeneratePages();
+
+            cbSort.SelectedIndex = 0;
+            cbGender.SelectedIndex = 0;
         }
 
         private void btnChange_Click(object sender, RoutedEventArgs e)
@@ -66,7 +75,7 @@ namespace Autoservice.Pages
             else if (int.TryParse(content, out int pageNum))
                 pageIndex = pageNum - 1;
 
-            DisplayClientsInPage();
+            
             GeneratePages();
         }
 
@@ -86,10 +95,17 @@ namespace Autoservice.Pages
                 spPages.Children[i].PreviewMouseDown += Paginator;
             }
             if (spPages.Children.Count != 0)
+            {
+                if (pageIndex > spPages.Children.Count)
+                    pageIndex = 0;
                 (spPages.Children[pageIndex] as TextBlock).TextDecorations = TextDecorations.Underline;
+            }
+                
+
+            DisplayClientsInPage();
         }
 
-        public void DisplayClientsInPage()
+        private void DisplayClientsInPage()
         {
             var clientsInPage = new List<Client>();
             for (int i = pageIndex * ITEMONPAGE; i < (pageIndex + 1) * ITEMONPAGE; i++)
@@ -105,6 +121,51 @@ namespace Autoservice.Pages
 
             }
             lvTable.ItemsSource = clientsInPage;
+        }
+
+        private void AllFilters()
+        {
+            Clients = AllClients;
+
+            var search = tbSearch.Text.ToLower().Trim();
+
+            if (search != "")
+            {
+                Clients = Clients.FindAll(a => 
+                    a.FirstName.ToLower().Contains(search) ||
+                    a.LastName.ToLower().Contains(search) ||
+                    a.Patronymic.ToLower().Contains(search));
+            }
+
+            var selectedSort = cbSort.SelectedItem as TextBlock;
+            if (selectedSort == tbFNameSort)
+                Clients = Clients.OrderBy(a => a.FirstName).ToList();
+            else if (selectedSort == tbFNameDescSort)
+                Clients = Clients.OrderByDescending(a => a.FirstName).ToList();
+            else if (selectedSort == tbLNameSort)
+                Clients = Clients.OrderBy(a => a.LastName).ToList();
+            else if (selectedSort == tbLNameDescSort)
+                Clients = Clients.OrderByDescending(a => a.LastName).ToList();
+
+            var selectedGender = cbGender.SelectedItem as Gender;
+            if (cbGender.SelectedIndex != 0)
+                Clients = Clients.FindAll(a => a.Gender == selectedGender);
+            GeneratePages();
+        }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            AllFilters();
+        }
+
+        private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AllFilters();
+        }
+
+        private void cbGender_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AllFilters();
         }
     }
 }
