@@ -23,13 +23,14 @@ namespace Autoservice.Pages
     {
         public MainWindow globalMainWindow;
         public List<Client> Clients { get; set; }
-        const int ITEMONPAGE = 20;
+        const int ITEMONPAGE = 19;
         int pageIndex = 0;
         public ClientsTablePage(MainWindow mainWindow)
         {
             InitializeComponent();
             globalMainWindow = mainWindow;
             globalMainWindow.tbTitle.Text = "Клиенты";
+
 
             Clients = DataAccess.GetClients();
             lvTable.ItemsSource = Clients;
@@ -64,6 +65,9 @@ namespace Autoservice.Pages
                 pageIndex++;
             else if (int.TryParse(content, out int pageNum))
                 pageIndex = pageNum - 1;
+
+            DisplayClientsInPage();
+            GeneratePages();
         }
 
         private void GeneratePages()
@@ -83,7 +87,24 @@ namespace Autoservice.Pages
             }
             if (spPages.Children.Count != 0)
                 (spPages.Children[pageIndex] as TextBlock).TextDecorations = TextDecorations.Underline;
+        }
 
+        public void DisplayClientsInPage()
+        {
+            var clientsInPage = new List<Client>();
+            for (int i = pageIndex * ITEMONPAGE; i < (pageIndex + 1) * ITEMONPAGE; i++)
+            {
+                try
+                {
+                    clientsInPage.Add(Clients[i]);
+                }
+                catch (Exception)
+                {
+                    break;
+                }
+
+            }
+            lvTable.ItemsSource = clientsInPage;
         }
     }
 }

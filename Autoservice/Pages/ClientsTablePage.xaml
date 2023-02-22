@@ -37,7 +37,7 @@
         <ListView x:Name="lvTable" Grid.Row="1" ItemsSource="{Binding Clients}" HorizontalContentAlignment="Stretch" BorderBrush="Transparent">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Margin="10" Padding="10" BorderBrush="Black" BorderThickness="2" CornerRadius="5" MaxWidth="880">
+                    <Border Margin="10" Padding="10" BorderBrush="Black" BorderThickness="1" CornerRadius="5" MaxWidth="880">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
@@ -87,7 +87,7 @@
                 <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"/>
                 <Button x:Name="btnDelete" Content="Удалить" Click="btnDelete_Click"/>
             </StackPanel>
-            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <TextBlock x:Name="btnLastPage" Text="&lt;" PreviewMouseDown="Paginator"/>
                 <StackPanel x:Name="spPages" Orientation="Horizontal" VerticalAlignment="Center"/>
                 <TextBlock x:Name="btnNextPage" Text="&gt;" PreviewMouseDown="Paginator"/>
