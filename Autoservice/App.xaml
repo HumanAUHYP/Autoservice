@@ -11,11 +11,13 @@
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontFamily" Value="Tw Cen MT"/>
+            
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontFamily" Value="Tw Cen MT"/>
             <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         
         <Color x:Key="MouseLeave" A="0" R="255" G="255" B="255" />

@@ -88,13 +88,9 @@
                 <Button x:Name="btnDelete" Content="Удалить" Click="btnDelete_Click"/>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="btnLastPage" Content="&lt;" Click="btnLastPage_Click"/>
-                <StackPanel x:Name="spPages" Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="1"/>
-                    <TextBlock Text="2"/>
-                    <TextBlock Text="3"/>
-                </StackPanel>
-                <Button x:Name="btnNextPage" Content="&gt;" Click="btnNextPage_Click"/>
+                <TextBlock x:Name="btnLastPage" Text="&lt;" PreviewMouseDown="Paginator"/>
+                <StackPanel x:Name="spPages" Orientation="Horizontal" VerticalAlignment="Center"/>
+                <TextBlock x:Name="btnNextPage" Text="&gt;" PreviewMouseDown="Paginator"/>
             </StackPanel>
         </Grid>
     </Grid>
