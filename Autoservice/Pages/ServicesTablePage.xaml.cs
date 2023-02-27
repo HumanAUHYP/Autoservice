@@ -32,16 +32,19 @@ namespace Autoservice.Pages
             globalMainWindow = mainWindow;
             globalMainWindow.tbTitle.Text = "Услуги";
 
-            Services = DataAccess.GetServices().FindAll(a => a.IsD);
+            Services = DataAccess.GetServices().FindAll(a => a.IsDeleted == false);
             AllServices = Services;
+
+            GeneratePages();
+            cbSort.SelectedIndex = 0;
         }
 
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
             if (lvTable.SelectedItem != null)
             {
-                var client = lvTable.SelectedItem as Client;
-                NavigationService.Navigate(new AddClientPage(client));
+                var service = lvTable.SelectedItem as Service;
+                NavigationService.Navigate(new AddServicePage(service));
             }
             else
                 MessageBox.Show("Выберите клиента для изменения");
@@ -108,10 +111,10 @@ namespace Autoservice.Pages
                 (spPages.Children[pageIndex] as TextBlock).TextDecorations = TextDecorations.Underline;
             }
 
-            DisplayClientsInPage();
+            DisplayServicesInPage();
         }
 
-        private void DisplayClientsInPage()
+        private void DisplayServicesInPage()
         {
             var servicesInPage = new List<Service>();
             for (int i = pageIndex * ITEMONPAGE; i < (pageIndex + 1) * ITEMONPAGE; i++)
@@ -125,7 +128,7 @@ namespace Autoservice.Pages
                     break;
                 }
             }
-            lvTable.ItemsSource = servicesInPage;
+            lvTable.ItemsSource = servicesInPage.FindAll(a => a.IsDeleted == false);
         }
 
         private void AllFilters()

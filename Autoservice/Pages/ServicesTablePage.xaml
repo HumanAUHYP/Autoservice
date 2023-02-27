@@ -24,8 +24,8 @@
             <StackPanel Grid.Column="1" Orientation="Horizontal">
                 <ComboBox Style="{DynamicResource ComboBoxStyle1}" x:Name="cbSort" Width="200"  Margin="10" SelectionChanged="cbSort_SelectionChanged">
                     <TextBlock Text="Без сортировки"/>
-                    <TextBlock x:Name="tbTitleSort" Text="Фамилия А-Я"/>
-                    <TextBlock x:Name="tbTitleDescSort" Text="Фамилия Я-А"/>
+                    <TextBlock x:Name="tbTitleSort" Text="Название А-Я"/>
+                    <TextBlock x:Name="tbTitleDescSort" Text="Название Я-А"/>
                 </ComboBox>
             </StackPanel>
 
@@ -55,6 +55,7 @@
                             <StackPanel Grid.Column="2" Margin="0, 30">
                                 <TextBlock Text="Цена: "/>
                                 <TextBlock Text="{Binding Cost}"/>
+                                <TextBlock Text="руб."/>
                             </StackPanel>
                         </Grid>
                     </Border>

@@ -9,6 +9,21 @@
       Title="AddServicePage">
 
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 5">
+                <TextBlock Text="Название:" Width="200"/>
+                <TextBox x:Name="tbxName" MinWidth="200" Margin="10, 0, 0, 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 5">
+                <TextBlock Text="Длительность (с):" Width="200"/>
+                <TextBox x:Name="tbxDurationInSec" MinWidth="200" Margin="10, 0, 0, 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 5">
+                <TextBlock Text="Цена (руб):" Width="200"/>
+                <TextBox x:Name="tbxCost" MinWidth="200" Margin="10, 0, 0, 0"/>
+            </StackPanel>
+            
+            <Button Width="120" Content="Сохранить" Click="Button_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

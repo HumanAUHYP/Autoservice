@@ -31,16 +31,20 @@ namespace Autoservice.Pages
             InitializeComponent();
             Genders = DataAccess.GetGenders();
             cbGender.ItemsSource = Genders;
-            client = _client;
-            oldClient = _client; 
 
-            if (client != null)
+            if (_client.FirstName == null)
             {
-                tbxFirstName.Text = client.FirstName;
-                tbxLastName.Text = client.LastName;
-                tbxPatronymic.Text = client.Patronymic;
-                tbxPhone.Text = client.Phone;
+                client = new Client();
+                oldClient = new Client();
             }
+            else
+                client = _client;
+
+            tbxFirstName.Text = client.FirstName;
+            tbxLastName.Text = client.LastName;
+            tbxPatronymic.Text = client.Patronymic;
+            tbxPhone.Text = client.Phone;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -56,9 +60,9 @@ namespace Autoservice.Pages
                 client.IsDeleted = false;
 
                 if (oldClient != null)
-                    db.connection.SaveChanges();
-                else
                     DataAccess.AddClient(client);
+                else
+                    db.connection.SaveChanges();
 
                 NavigationService.GoBack();
             }
