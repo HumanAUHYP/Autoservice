@@ -5,18 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="308a5e2d430a4b4788cee1cf20e49fec" Name="Diagram1" ZoomLevel="25">
-        <EntityTypeShape EntityType="AutoserviceShakirovModel.Client" Width="1.5" PointX="0.75" PointY="10.5" />
-        <EntityTypeShape EntityType="AutoserviceShakirovModel.ClientService" Width="1.5" PointX="3" PointY="9.25" />
-        <EntityTypeShape EntityType="AutoserviceShakirovModel.DocumentByService" Width="1.5" PointX="5.25" PointY="9.75" />
-        <EntityTypeShape EntityType="AutoserviceShakirovModel.Gender" Width="1.5" PointX="1.5" PointY="15.625" />
+        <EntityTypeShape EntityType="AutoserviceShakirovModel.Client" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="AutoserviceShakirovModel.ClientService" Width="1.5" PointX="3" PointY="9.375" />
+        <EntityTypeShape EntityType="AutoserviceShakirovModel.DocumentByService" Width="1.5" PointX="5.25" PointY="9.875" />
+        <EntityTypeShape EntityType="AutoserviceShakirovModel.Gender" Width="1.5" PointX="1.5" PointY="15.75" />
         <EntityTypeShape EntityType="AutoserviceShakirovModel.Manufacturer" Width="1.5" PointX="0.75" PointY="2.625" />
         <EntityTypeShape EntityType="AutoserviceShakirovModel.Product" Width="1.5" PointX="3" PointY="1.875" />
         <EntityTypeShape EntityType="AutoserviceShakirovModel.ProductPhoto" Width="1.5" PointX="5.25" PointY="5.75" />
         <EntityTypeShape EntityType="AutoserviceShakirovModel.ProductSale" Width="1.5" PointX="5.25" PointY="2.375" />
         <EntityTypeShape EntityType="AutoserviceShakirovModel.Service" Width="1.5" PointX="0.75" PointY="7" />
-        <EntityTypeShape EntityType="AutoserviceShakirovModel.ServicePhoto" Width="1.5" PointX="3" PointY="18.5" />
+        <EntityTypeShape EntityType="AutoserviceShakirovModel.ServicePhoto" Width="1.5" PointX="3" PointY="18.625" />
         <EntityTypeShape EntityType="AutoserviceShakirovModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="AutoserviceShakirovModel.Tag" Width="1.5" PointX="3" PointY="6.5" />
+        <EntityTypeShape EntityType="AutoserviceShakirovModel.Tag" Width="1.5" PointX="3" PointY="6.625" />
         <AssociationConnector Association="AutoserviceShakirovModel.FK_Client_Gender" />
         <AssociationConnector Association="AutoserviceShakirovModel.FK_ClientService_Client" />
         <AssociationConnector Association="AutoserviceShakirovModel.FK_ClientService_Service" />

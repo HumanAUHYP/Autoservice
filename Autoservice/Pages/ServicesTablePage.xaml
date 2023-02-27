@@ -5,10 +5,79 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Autoservice.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="950"
       Title="ServicesTablePage">
 
     <Grid>
-        <TextBlock Text="СТР3"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#FFFFFFE1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="tbSearch" Margin="10" Width="440" HorizontalAlignment="Right" TextChanged="tbSearch_TextChanged"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <ComboBox Style="{DynamicResource ComboBoxStyle1}" x:Name="cbSort" Width="200"  Margin="10" SelectionChanged="cbSort_SelectionChanged">
+                    <TextBlock Text="Без сортировки"/>
+                    <TextBlock x:Name="tbTitleSort" Text="Фамилия А-Я"/>
+                    <TextBlock x:Name="tbTitleDescSort" Text="Фамилия Я-А"/>
+                </ComboBox>
+            </StackPanel>
+
+        </Grid>
+
+        <ListView x:Name="lvTable" Grid.Row="1" ItemsSource="{Binding Services}" HorizontalContentAlignment="Stretch" BorderBrush="Transparent" MaxWidth="1000">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="10" Padding="10" BorderBrush="Black" BorderThickness="1" CornerRadius="5" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="180"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <StackPanel Grid.Column="1" Margin="30">
+                                <TextBlock>
+                                    <Run Text="{Binding Title}"/>
+                                </TextBlock>
+                                <TextBlock>
+                                    <Run Text="Время работ: "/>
+                                    <Run Text="{Binding DurationInSeconds}"/>
+                                    <Run Text="сек"/>
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Margin="0, 30">
+                                <TextBlock Text="Цена: "/>
+                                <TextBlock Text="{Binding Cost}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Row="2" Background="#FFFFFFE1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button x:Name="btnChange" Content="Изменить" Click="btnChange_Click"/>
+                <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"/>
+                <Button x:Name="btnDelete" Content="Удалить" Click="btnDelete_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <TextBlock x:Name="btnLastPage" Text="&lt;" PreviewMouseDown="Paginator"/>
+                <StackPanel x:Name="spPages" Orientation="Horizontal" VerticalAlignment="Center"/>
+                <TextBlock x:Name="btnNextPage" Text="&gt;" PreviewMouseDown="Paginator"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

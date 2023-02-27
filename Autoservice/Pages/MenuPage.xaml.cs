@@ -35,7 +35,7 @@ namespace Autoservice.Pages
 
         private void btnServices_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ServicesTablePage());
+            NavigationService.Navigate(new ServicesTablePage(globalMainWindow));
         }
 
         private void btnPerformServices_Click(object sender, RoutedEventArgs e)
