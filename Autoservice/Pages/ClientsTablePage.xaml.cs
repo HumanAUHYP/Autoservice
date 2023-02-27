@@ -37,7 +37,7 @@ namespace Autoservice.Pages
             Genders.Insert(0, new Gender { Name = "Любой гендер" });
             cbGender.ItemsSource = Genders;
 
-            Clients = DataAccess.GetClients();
+            Clients = DataAccess.GetClients().FindAll(a => a.IsDeleted == false);
             AllClients = Clients;
             lvTable.ItemsSource = Clients;
 
@@ -49,17 +49,35 @@ namespace Autoservice.Pages
 
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
-
+            if (lvTable.SelectedItem != null)
+            {
+                var client = lvTable.SelectedItem as Client;
+                NavigationService.Navigate(new AddClientPage(client));
+            }
+            else
+                MessageBox.Show("Выберите клиента для изменения");
+            
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddClientPage(new Client()));
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var client = lvTable.SelectedItem as Client;
+                client.IsDeleted = true;
+                db.connection.SaveChanges();
 
+                GeneratePages();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка");
+            }
         }
 
         private void Paginator(object sender, MouseButtonEventArgs e)
@@ -120,7 +138,7 @@ namespace Autoservice.Pages
                 }
 
             }
-            lvTable.ItemsSource = clientsInPage;
+            lvTable.ItemsSource = clientsInPage.FindAll(a => a.IsDeleted == false);
         }
 
         private void AllFilters()

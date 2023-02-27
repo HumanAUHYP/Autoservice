@@ -69,7 +69,6 @@
                                 <TextBlock Text="Контакты: "/>
                                 <TextBlock Text="{Binding Phone}"/>
                             </StackPanel>
-                            
                         </Grid>
                     </Border>
                 </DataTemplate>

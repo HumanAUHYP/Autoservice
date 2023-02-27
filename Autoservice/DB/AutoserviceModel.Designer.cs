@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\201923\source\repos\Autoservice\Autoservice\DB\AutoserviceModel.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\201923\Source\Repos\HumanAUHYP\Autoservice\Autoservice\DB\AutoserviceModel.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.
